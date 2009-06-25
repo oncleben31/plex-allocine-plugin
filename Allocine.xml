@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site site="http://www.allocine.fr/video" plugin="http://a69.g.akamai.net/n/69/10688/v1/img5.allocine.fr/acmedia/skin/allocinev5/acvision2/player/Acvision2/player_AcVision2.swf" initialState="playing" version="1.0">
+			
+	<crop x="5" y="5" width="720" height="540" />
+	
+	<seekbar type="simple">
+		<start x="228" y="565" />
+		<end   x="363" y="565" />
+ 		<played>
+   			<color rgb="000000" />
+		</played>
+	</seekbar>
+	
+	<condition name="paused">
+ 		<!-- Regular paused -->
+   		<color x="176"  y="563" rgb="9e9e9e" />
+	</condition>
+	
+	<!-- PLAYING -->
+	<state name="playing">
+		<event>
+			<condition>
+				<command name="pause" />
+			</condition>
+			<action>
+				<click x="172" y="563" />
+			</action>
+		</event>		
+		
+		<!-- Detect paused video -->
+ 		<event>
+ 			<condition>
+   				<condition name="paused" />
+ 			</condition>
+ 			<action>
+   				<goto state="paused" />
+ 			</action>
+ 		</event>
+	</state>
+
+	
+	<!-- PAUSED -->
+	<state name="paused">
+		<event>
+			<condition>
+				<command name="play" />
+			</condition>
+			<action>
+				<click x="172" y="563" />
+				<goto state="playing" />
+			</action>
+		</event>
+		<event>
+ 			<condition>
+   				<not>
+   					<condition name="paused" />
+   				</not>
+ 			</condition>
+ 			<action>
+   				<goto state="playing" />
+ 			</action>
+ 		</event>
+	</state>
+	
+	
+</site>
