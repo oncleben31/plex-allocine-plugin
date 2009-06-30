@@ -1,0 +1,25 @@
+This is a plugin for Plex Media Server (www.plexapp.com).
+It allow to view trailers for France from Allocine.fr.
+
+INSTALL
+Place the .bundle file in ~/Library/Application Support/Plex Media Server/Plug-ins/ 
+
+SUPPORT
+For comments or questions go here : http://forums.plexapp.com/index.php?showtopic=7051
+
+HISTORY
+Version 0.3
+
+    * Get the HD flv file directly
+    * Add a summary for each movie
+    * Don't use the string file to avoid encode/decode issues 
+
+Version 0.2
+
+    * Update for compatibility with website changes
+    * Clean the code 
+
+Version 0.1
+
+    * Initial release.
+    * Give access to four RSS feeds from Allocine.fr to watch movie trailers 
