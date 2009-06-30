@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 '''
-Created on June 18, 2009
+Created on June 30, 2009
 
 @summary: A Plex Media Server plugin that integrates trailers of French web site Allocine.
-@version: 0.3
+@version: 0.4
 @author: Oncleben31
 '''
 
@@ -11,7 +11,7 @@ Created on June 18, 2009
 from PMS import *
 from PMS.Objects import *
 from PMS.Shortcuts import *
-
+import lxml
 
 # Plugin parameters
 PLUGIN_TITLE						= "Allociné"					# The plugin Title
@@ -101,7 +101,7 @@ def TraiteFluxRSS(urlFluxRSS, titreFluxRSS):
 		
 		pageFilm = XML.ElementFromURL(urlDescription, isHTML=True, encoding="iso-8859-1")
 		divDescription = pageFilm.xpath("//div[@align]/h4")
-		description = divDescription[0].text.encode("iso-8859-1")
+		description = divDescription[0].xpath("string()").encode("iso-8859-1")
 				
 		dir.Append(VideoItem(urlFlv, title=title.decode("utf-8"), subtitle=subtitle.decode("utf-8"), summary=description.decode("utf-8"), thumb=thumb)) 
 	
