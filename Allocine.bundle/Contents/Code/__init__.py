@@ -99,9 +99,9 @@ def TraiteFluxRSS(urlFluxRSS, titreFluxRSS):
 		urlDescription = "http://www.allocine.fr/film/fichefilm_gen_cfilm=" + c.find('link').text.rsplit("cfilm=")[1]
 		Log("urlDescription %s" % (urlDescription.encode("utf8")))
 		
-		pageFilm = XML.ElementFromURL(urlDescription, isHTML=True, encoding="iso-8859-1")
-		divDescription = pageFilm.xpath("//div[@align]/h4")
-		description = divDescription[0].xpath("string()").encode("iso-8859-1")
+		pageFilm = XML.ElementFromURL(urlDescription, isHTML=True, encoding="utf-8")
+		divDescription = pageFilm.xpath('//p[contains(., "Synopsis :")]')
+		description = divDescription[0].xpath("string()").encode("iso-8859-1").rsplit("Synopsis :")[1]
 				
 		dir.Append(VideoItem(urlFlv, title=title.decode("utf-8"), subtitle=subtitle.decode("utf-8"), summary=description.decode("utf-8"), thumb=thumb)) 
 	
