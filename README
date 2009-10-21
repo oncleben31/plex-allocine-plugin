@@ -8,6 +8,9 @@ Place the .bundle file in ~/Library/Application Support/Plex Media Server/Plug-i
 For comments or questions go here : http://forums.plexapp.com/index.php?showtopic=7051
 
 == HISTORY
+Version 0.5
+   * Update to fiw the new desgin of the allocine website.
+
 Version 0.4
 
    * Update to avoid Plugin crash when there are HTML tags in movie description
