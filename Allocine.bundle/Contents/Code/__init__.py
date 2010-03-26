@@ -3,7 +3,7 @@
 Created on June 30, 2009
 
 @summary: A Plex Media Server plugin that integrates trailers of French web site Allocine.
-@version: 0.4
+@version: 0.6
 @author: Oncleben31
 '''
 
@@ -93,7 +93,7 @@ def TraiteFluxRSS(urlFluxRSS, titreFluxRSS):
 		subtitle = titleEtSubtitle[1]
 		thumb = c.find('enclosure').get('url')
 		
-		urlFlv = "http://hd.fr.mediaplayer.allocine.fr/nmedia/" + thumb.rsplit("acmedia/medias/nmedia/")[1].rsplit(".jpg")[0] + "_hd.flv"
+		urlFlv = "http://hd.fr.mediaplayer.allocine.fr/nmedia/" + thumb.rsplit("acmedia/medias/nmedia/")[1].rsplit(".jpg")[0] + "_hd_001.flv"
 		Log("urlFlv %s" % (urlFlv.encode("utf8")))
 		
 		urlDescription = "http://www.allocine.fr/film/fichefilm_gen_cfilm=" + c.find('link').text.rsplit("cfilm=")[1]
@@ -101,7 +101,7 @@ def TraiteFluxRSS(urlFluxRSS, titreFluxRSS):
 		
 		pageFilm = XML.ElementFromURL(urlDescription, isHTML=True, encoding="utf-8")
 		divDescription = pageFilm.xpath('//p[contains(., "Synopsis :")]')
-		description = divDescription[0].xpath("string()").encode("iso-8859-1").rsplit("Synopsis :")[1]
+		description = divDescription[0].xpath("string()").rsplit("Synopsis :")[1]
 				
 		dir.Append(VideoItem(urlFlv, title=title.decode("utf-8"), subtitle=subtitle.decode("utf-8"), summary=description.decode("utf-8"), thumb=thumb)) 
 	
